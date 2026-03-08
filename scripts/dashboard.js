@@ -84,6 +84,17 @@ function displayIssues(issues) {
   container.innerHTML = "";
   totalIssueCount.textContent = `${issues.length} Issues`;
 
+  if (issues.length === 0) {
+    container.innerHTML = `<div class="col-span-full text-center py-16">
+                        <i class="fa-brands fa-earlybirds text-7xl mb-4"></i>
+                        <h1 class="text-xl font-semibold">No issues found</h1>
+                        <p class="text-[#64748B]">Try adjusting your search to find what you're looking for.
+                        </p>
+                    </div>`;
+    showSpinner(false);
+    return;
+  }
+
   issues.forEach((issue) => {
     const borderColor = issue.status === "open" ? "#00A96E" : "#A855F7";
     const statusImg =
