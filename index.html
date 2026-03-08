@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Tracker</title>
+
+    <!-- daisyUi -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F8FAFC]">
+    <div class="container mx-auto flex justify-center items-center min-h-screen sm:py-16 py-0">
+        <div
+            class="sm:w-md w-full card bg-white sm:shadow-xl shadow-none shadow-black/8 sm:rounded-lg rounded-none gap-6 p-6">
+            <!-- card -->
+            <div>
+                <img class="mx-auto w-24 mb-6" src="./assets/github-logo.png" alt="Github Logo">
+                <div class="text-center">
+                    <h3 class="font-semibold text-[#1F2937] text-2xl mb-1">Github Issue Tracker</h3>
+                    <p class="font-normal text-base text-[#64748B]">Sign in to manage your issues</p>
+                </div>
+            </div>
+            <form class="fieldset">
+                <fieldset class="fieldset">
+                    <label class="label text-[#1F2937] font-medium text-base">Username</label>
+                    <input id="input-username" type="text"
+                        class="input w-full rounded-lg border border-[#E4E4E7] placeholder:text-[#64748B]"
+                        placeholder="Enter Username" name="username" required />
+                    <p class="text-[#4A00FF]">Default: admin</p>
+                </fieldset>
+
+                <label class="fieldset">
+                    <span class="label text-[#1F2937] font-medium text-base">Password</span>
+                    <input id="input-password" type="password"
+                        class="input w-full rounded-lg border border-[#E4E4E7] placeholder:text-[#64748B]"
+                        placeholder="Enter Password" name="password" required />
+                    <span class="text-[#4A00FF]">Default: admin123</span>
+                </label>
+
+                <button type="button" class="btn btn-primary mt-4 shadow-none bg-[#4A00FF] rounded-lg border-none"
+                    onclick="signIn()">Sign
+                    In</button>
+            </form>
+            <div class="divider">OR</div>
+            <div class="text-center">
+                <p class="text-sm text-[#64748B] mb-2">Demo Credentials:</p>
+                <div class="bg-[#F8FAFC] p-6 rounded-lg">
+                    <p><span class="font-semibold">Username:</span> admin</p>
+                    <p><span class="font-semibold">Password:</span> admin123</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+            <h3 id="modal-title" class="text-lg font-bold">Hello!</h3>
+            <p id="modal-body" class="py-4">Press ESC key or click the button below to close</p>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn btn-primary shadow-none">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="./scripts/machine.js"></script>
+    <script src="./scripts/login.js"></script>
+</body>
+
+</html>
