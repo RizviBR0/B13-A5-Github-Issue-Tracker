@@ -162,3 +162,23 @@ function showIssueModal(id) {
 }
 
 loadIssues();
+
+document.getElementById("search-button").addEventListener("click", () => {
+  const searchValue = document
+    .getElementById("search-input")
+    .value.toLowerCase();
+
+  if (searchValue.length > 0) {
+    const tabs = document.querySelectorAll("#tab-all, #tab-open, #tab-closed");
+    tabs.forEach((tab) => {
+      tab.classList.remove("active");
+      tab.classList.add("inactive");
+    });
+
+    fetch(
+      `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`,
+    )
+      .then((res) => res.json())
+      .then((json) => displayIssues(json.data));
+  }
+});
