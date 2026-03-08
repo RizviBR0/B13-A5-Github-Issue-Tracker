@@ -135,9 +135,7 @@ function displayIssues(issues) {
 }
 
 function showIssueModal(id) {
-  fetch(
-    `https://phi-lab-server.vercel.app/api/v1/lab/issue/${encodeURIComponent(id)}`,
-  )
+  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`)
     .then((res) => res.json())
     .then((result) => {
       const issue = result.data;
@@ -156,9 +154,9 @@ function showIssueModal(id) {
 
       const statusBadge = document.getElementById("modal-status-badge");
       if (issue.status === "open") {
-        statusBadge.innerHTML = `<span class="badge bg-[#00A96E] text-white border-none text-xs">Opened</span>`;
+        statusBadge.innerHTML = `<span class="badge bg-[#00A96E] text-white border-none text-xs rounded-full">Opened</span>`;
       } else {
-        statusBadge.innerHTML = `<span class="badge bg-[#A855F7] text-white border-none text-xs">Closed</span>`;
+        statusBadge.innerHTML = `<span class="badge bg-[#A855F7] text-white border-none text-xs rounded-full">Closed</span>`;
       }
 
       document.getElementById("modal-labels").innerHTML = issue.labels
