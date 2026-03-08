@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Application Tracker</title>
+    <title>GitHub Issues Tracker</title>
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
 
     <!-- daisyUi -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
@@ -28,7 +29,7 @@
         .active {
             background-color: #4A00FF;
             color: white;
-            font-weight: semibold;
+            font-weight: 600;
             border: none;
         }
 
@@ -36,7 +37,7 @@
             background-color: white;
             color: #64748B;
             border: 1px solid #E4E4E7;
-            font-weight: medium;
+            font-weight: 500;
         }
 
         .active:hover {
@@ -55,7 +56,7 @@
             <!-- logo and title -->
             <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-1">
-                    <img class="w-9" src="./assets/github-logo.png" alt="Github Logo">
+                    <img class="w-9" src="./assets/github-logo.png" alt="GitHub Logo">
                     <p class="font-semibold text-2xl text-[#1F2937] mt-1 sm:block hidden">GitHub Issues Tracker</p>
                 </div>
             </div>
@@ -131,7 +132,7 @@
                     <span class="skeleton skeleton-text">Loading issues...</span>
                 </div>
 
-                <!-- all issue card conatiner -->
+                <!-- all issue card container -->
                 <div id="issue-container"
                     class="bg-[#FBFBFB] sm:p-6 p-4 grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
                 </div>

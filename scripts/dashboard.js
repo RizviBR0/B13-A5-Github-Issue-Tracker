@@ -178,6 +178,8 @@ document.getElementById("search-button").addEventListener("click", () => {
     .value.toLowerCase();
 
   if (searchValue.length > 0) {
+    showSpinner(true);
+
     const tabs = document.querySelectorAll("#tab-all, #tab-open, #tab-closed");
     tabs.forEach((tab) => {
       tab.classList.remove("active");
