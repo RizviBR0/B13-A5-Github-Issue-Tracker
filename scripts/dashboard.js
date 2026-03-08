@@ -1,3 +1,5 @@
+const totalIssueCount = document.getElementById("total-issue-count");
+
 function tabToggle(id) {
   const tabs = document.querySelectorAll("#tab-all, #tab-open, #tab-closed");
   tabs.forEach((tab) => {
@@ -14,6 +16,7 @@ function loadIssues() {
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then((res) => res.json())
     .then((result) => {
+      totalIssueCount.textContent = `${result.data.length} Issues`;
       displayIssues(result.data);
     });
 }
