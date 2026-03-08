@@ -72,7 +72,7 @@ function displayIssues(issues) {
     const date = new Date(issue.createdAt).toLocaleDateString();
 
     const card = `
-      <div class="card w-full bg-base-100 border-t-3 border-[${borderColor}] shadow-md">
+      <div onclick="showIssueModal(${issue.id})" class="card w-full bg-base-100 border-t-3 border-[${borderColor}] shadow-md cursor-pointer">
         <div class="border-b border-[#E4E4E7] p-4">
           <div class="flex justify-between items-center mb-3">
             <img src="${statusImg}" alt="${statusAlt}">
@@ -95,6 +95,44 @@ function displayIssues(issues) {
 
     container.innerHTML += card;
   });
+}
+
+function showIssueModal(id) {
+  fetch(
+    `https://phi-lab-server.vercel.app/api/v1/lab/issue/${encodeURIComponent(id)}`,
+  )
+    .then((res) => res.json())
+    .then((result) => {
+      const issue = result.data;
+      const modal = document.getElementById("my_modal_1");
+
+      document.getElementById("modal-title").textContent = issue.title;
+      document.getElementById("modal-description").textContent =
+        issue.description;
+      document.getElementById("modal-assignee").textContent =
+        issue.assignee || "Unassigned";
+      document.getElementById("modal-date").textContent = new Date(
+        issue.createdAt,
+      ).toLocaleDateString();
+      document.getElementById("modal-meta").textContent =
+        `Opened by ${issue.author}`;
+
+      const statusBadge = document.getElementById("modal-status-badge");
+      if (issue.status === "open") {
+        statusBadge.innerHTML = `<span class="badge bg-[#00A96E] text-white border-none text-xs">Opened</span>`;
+      } else {
+        statusBadge.innerHTML = `<span class="badge bg-[#A855F7] text-white border-none text-xs">Closed</span>`;
+      }
+
+      document.getElementById("modal-labels").innerHTML = issue.labels
+        .map((label) => getLabel(label))
+        .join("");
+      document.getElementById("modal-priority").innerHTML = getPriority(
+        issue.priority,
+      );
+
+      modal.showModal();
+    });
 }
 
 loadIssues();
