@@ -1,95 +1,12 @@
-# 🌟 Welcome To (সহজ সরল সিম্পল) Assignment - 5
+# 🐙 GitHub Issue Tracker
 
-# **📅 Deadline For 60 marks:** 9th March, 2026 (11:59 pm ⏱️)  
-#  📅 No Deadline For 50 marks  
-# **📅 Deadline For 30 marks:** Any time after 9th March.
+A simple GitHub Issue Tracker application built as part of **Batch 13 — Assignment 5** at Programming Hero. Log in with demo credentials, browse issues, and manage them from a clean dashboard.
 
 ---
 
-# Assignment-05: GitHub Issues Tracker
+## 🚀 Live Demo
 
-
-### **API Endpoints:**
-###  **All Issues:** 
-  - https://phi-lab-server.vercel.app/api/v1/lab/issues 
-
-
-###  **Single Issue:**
-   - https://phi-lab-server.vercel.app/api/v1/lab/issue/{id}
-
-   - Example: https://phi-lab-server.vercel.app/api/v1/lab/issue/33
-
-
-###  **Search Issue:** https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q={searchText}
-
-   - Example:  https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
-
-
----
-
-## 📝 Main Requirements
-
-## 🎨 Design Part
-
-## Login Page
-- Create a login page containing a logo, title, and sub-title
-- Below that, there will be 2 inputs, a sign-in button, and a demo credential to sign in. Follow the Figma for this page 
-- Styled as per Figma
-
-## Main Page: 
-
-### Navbar: 
-
-- Navbar with website logo/name on the left
-- Search input and button on the right
-
-### Tab Section like Figma: 
-
-- 3 tab ( All, Open, Closed) at the top of this section.(**All**, **Open**, **Closed**)
-
-- Below the tab, there will be an icon, the issue count, some text on the left, and an open and closed marker on the right
-
-- Responsiveness: The website should be responsive for mobile devices. It is totally up to you. 
-
-
---- 
-
-
-## ⚙️ Functionalities
-- In login page, there will be default admin credentials (username, password). You need to sign in using these credentials.
-
-- Load all issues and display as per Figma
-
-- On clicking on an open or closed tab, it will load the issues data of the related tab and show it in a display-like card in a 4-column layout like Figma. By default, it will show all data 
-
-- Each card shows:
-  - Title
-  - Description
-  - Status 
-  - Author
-  - Priority
-  - Label
-  - CreatedAt
-- Clicking on an issue  card will open a modal and show all the information about that Issue. 
-
-### 🚀 Challenges
-
-
-- Show the card Top border based on their category(open, closed), open card will have Green Boder, closed card will have a purple border on top. 
-
-- Loading spinner on data load
-
-- Show active button on changing category names
-
-- Implement Search Functionality and 8 meaningful github commit.  
-
-- Create a readme file and answer this question on your own. Don’t copy-paste from Google or any AI chatbot. 
-    - 1️⃣ What is the difference between var, let, and const?
-    - 2️⃣ What is the spread operator (...)?
-    - 3️⃣ What is the difference between map(), filter(), and forEach()?
-    - 4️⃣ What is an arrow function?
-    - 5️⃣ What are template literals?
-
+> _[Live Link](https://rizvibr0.github.io/B13-A5-Github-Issue-Tracker/)_
 
 ---
 
@@ -103,26 +20,108 @@
 
 ## 🔑 Demo Credentials
 
-```text
-Username: admin
-Password: admin123
+| Field    | Value      |
+| -------- | ---------- |
+| Username | `admin`    |
+| Password | `admin123` |
+
+---
+
+## ❓ Question & Answer
+
+### 1️⃣ What is the difference between `var`, `let`, and `const`?
+
+| Keyword | Scope           | Hoisting Behaviour | Reassignable? | Redeclarable? |
+| ------- | --------------- | ------------------ | ------------- | ------------- |
+| `var`   | Function-scoped | ✅ Yes             | ✅ Yes        | ✅ Yes        |
+| `let`   | Block-scoped    | ⚠️ TDZ             | ✅ Yes        | ❌ No         |
+| `const` | Block-scoped    | ⚠️ TDZ             | ❌ No         | ❌ No         |
+
+> `TDZ`: Temporal Dead Zone. It is a JS concept to prevent bugs. If you try to access the variable while it is in the TDZ, JavaScript will throw a ReferenceError.
+
+```js
+// var example
+var x = 10;
+var x = 20; // Re-declaration allowed
+x = 30; // Update allowed
+console.log(x); // Output: 30
 ```
 
+```js
+// let example
+let y = 10;
+// let y = 20;  // Re-declaration NOT allowed
+y = 25; // Update allowed
+console.log(y); // Output: 25
+```
+
+```js
+// const example
+const z = 10;
+// z = 20;      // Re-assignment NOT allowed
+console.log(z); // Output: 10
+```
+
+```js
+// Block scope demonstration
+if (true) {
+  var a = 1;
+  let b = 2;
+  const c = 3;
+}
+
+console.log(a); // Works (var is function/global scoped)
+console.log(b); // Error (let is block scoped)
+console.log(c); // Error (const is block scoped)
+```
 
 ---
 
-### Optional: 
- - No need to show status: Open, Closed styles On modals. 
- - No Need to show icon on labels 
- - No need to apply styles on Priority 
---- 
+### 2️⃣ What is the spread operator (`...`)?
 
+The spread operator (...) in JavaScript provides a simple and expressive way to expand elements from arrays, strings, or objects.It is incredibly useful for copying, merging, and passing data. It helps make code cleaner.
 
-## 📤 What to submit
-
-- **GitHub Repository Link:**
-- **Live Site Link:**
+```js
+const copy = [...original]; // Copy an array
+const merged = { ...obj1, ...obj2 }; // Merge objects
+Math.max(...numbers); // Spread as arguments
+```
 
 ---
 
+### 3️⃣ What is the difference between `map()`, `filter()`, and `forEach()`?
 
+map, filter and forEach is used to loop through an array item by item, the crucial difference lies in what they return and what you use them for.
+
+| Method    | Primary Purpose         | What it Returns                       |
+| --------- | ----------------------- | ------------------------------------- |
+| `map`     | Transform data          | A new array of the exact same length. |
+| `filter`  | Selecting/Removing data | A new array which is usually shorter  |
+| `forEach` | Execute action          | Undefined                             |
+
+---
+
+### 4️⃣ What is an arrow function?
+
+Arrow Functions allow a shorter syntax for function expressions. It does the same thing as a regular function expression. In arrow functions the return keyword and the curly brackets can be ommited if the function is a single statement. Also arrow functions automatically inherit "this" from their surrounding scope, preventing the context from being "lost" when used inside callbacks.
+
+```js
+// Traditional function
+function add(a, b) {
+  return a + b;
+}
+
+// Arrow function
+const add = (a, b) => a + b;
+```
+
+---
+
+### 5️⃣ What are template literals?
+
+Template literals are a modern way to create strings in JavaScript using backticks (`) instead of traditional single (') or double (") quotes. Using this we can easily inject variables or JS expression directly into the string using ${}.
+
+```js
+const name = "World";
+console.log(`Hello, ${name}!`);
+```
