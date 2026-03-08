@@ -1,4 +1,5 @@
 const totalIssueCount = document.getElementById("total-issue-count");
+let allIssues = [];
 
 function tabToggle(id) {
   const tabs = document.querySelectorAll("#tab-all, #tab-open, #tab-closed");
@@ -10,14 +11,22 @@ function tabToggle(id) {
   const selected = document.getElementById(id);
   selected.classList.remove("inactive");
   selected.classList.add("active");
+
+  if (id === "tab-all") {
+    displayIssues(allIssues);
+  } else if (id === "tab-open") {
+    displayIssues(allIssues.filter((issue) => issue.status === "open"));
+  } else if (id === "tab-closed") {
+    displayIssues(allIssues.filter((issue) => issue.status === "closed"));
+  }
 }
 
 function loadIssues() {
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then((res) => res.json())
     .then((result) => {
-      totalIssueCount.textContent = `${result.data.length} Issues`;
-      displayIssues(result.data);
+      allIssues = result.data;
+      displayIssues(allIssues);
     });
 }
 
@@ -59,6 +68,7 @@ function getPriority(priority) {
 function displayIssues(issues) {
   const container = document.getElementById("issue-container");
   container.innerHTML = "";
+  totalIssueCount.textContent = `${issues.length} Issues`;
 
   issues.forEach((issue, index) => {
     const borderColor = issue.status === "open" ? "#00A96E" : "#A855F7";
@@ -87,7 +97,7 @@ function displayIssues(issues) {
           </div>
         </div>
         <div class="p-4 space-y-2">
-          <p class="text-[#64748B] text-xs font-normal">#${index + 1} by ${issue.author}</p>
+          <p class="text-[#64748B] text-xs font-normal">#${issue.id} by ${issue.author}</p>
           <p class="text-[#64748B] text-xs font-normal">${date}</p>
         </div>
       </div>
