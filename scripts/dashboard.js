@@ -1,5 +1,17 @@
 const totalIssueCount = document.getElementById("total-issue-count");
+const loadingSpinner = document.getElementById("loading-spinner");
+const issueContainer = document.getElementById("issue-container");
 let allIssues = [];
+
+function showSpinner(show) {
+  if (show) {
+    loadingSpinner.classList.remove("hidden");
+    issueContainer.classList.add("hidden");
+  } else {
+    loadingSpinner.classList.add("hidden");
+    issueContainer.classList.remove("hidden");
+  }
+}
 
 function tabToggle(id) {
   const tabs = document.querySelectorAll("#tab-all, #tab-open, #tab-closed");
@@ -22,6 +34,7 @@ function tabToggle(id) {
 }
 
 function loadIssues() {
+  showSpinner(true);
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then((res) => res.json())
     .then((result) => {
@@ -66,11 +79,12 @@ function getPriority(priority) {
 }
 
 function displayIssues(issues) {
+  showSpinner(true);
   const container = document.getElementById("issue-container");
   container.innerHTML = "";
   totalIssueCount.textContent = `${issues.length} Issues`;
 
-  issues.forEach((issue, index) => {
+  issues.forEach((issue) => {
     const borderColor = issue.status === "open" ? "#00A96E" : "#A855F7";
     const statusImg =
       issue.status === "open"
@@ -105,6 +119,8 @@ function displayIssues(issues) {
 
     container.innerHTML += card;
   });
+
+  showSpinner(false);
 }
 
 function showIssueModal(id) {
