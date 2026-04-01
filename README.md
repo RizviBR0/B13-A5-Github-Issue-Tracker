@@ -4,12 +4,6 @@ A simple GitHub Issue Tracker application built as part of **Batch 13 — Assign
 
 ---
 
-## 🚀 Live Demo
-
-> _[Live Link](https://rizvibr0.github.io/B13-A5-Github-Issue-Tracker/)_
-
----
-
 ## 🛠️ Technology Stack
 
 - **HTML**
